@@ -1,0 +1,122 @@
+package TestNG;
+
+import org.testng.Assert;
+
+import static org.testng.Assert.fail;
+
+import java.io.File;
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.OutputType;
+
+import javafx.scene.control.Alert;
+
+
+public class Geophy1 {
+	private WebDriver driver;
+	  private String baseUrl;
+	  private boolean acceptNextAlert = true;
+	  private StringBuffer verificationErrors = new StringBuffer();
+
+	  @BeforeTest(alwaysRun = true)
+	  public void setUp() throws Exception {
+		  
+		  System. setProperty("webdriver.chrome.driver","C:\\Driver\\chromedriver.exe");
+	    driver = new ChromeDriver();
+	
+	    
+	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	  }
+
+	  @Test (priority = 0)
+	  public void testGeophyNew() throws Exception {
+	    driver.get("https://evra.geophy.com/login");
+	    driver.findElement(By.id("email")).sendKeys("qaskillschallenge@geophy.com");
+	    driver.findElement(By.id("password")).sendKeys("qaskillschallenge@geophy.com");
+	    driver.findElement(By.xpath("//*[@id='form_login']/div[4]/button")).click();
+	    driver.findElement(By.id("address_input")).sendKeys("555 N College Avenue Tempe AZ USA");
+	    Thread.sleep(3000);
+	    driver.findElement(By.id("address_input")).sendKeys(Keys.DOWN); 
+	    driver.findElement(By.id("address_input")).sendKeys(Keys.ENTER);
+	    driver.findElement(By.xpath("//*[@id='app']/form/div[2]/div/button")).click();
+	    driver.findElement(By.id("noi")).sendKeys("2,000,000");
+	    driver.findElement(By.id("number_of_units")).sendKeys("20");
+	    driver.findElement(By.id("year_built")).sendKeys("2000");
+	    driver.findElement(By.id("occupancy")).sendKeys("80");
+	    driver.findElement(By.xpath("//*[@id='app']/form/div[3]/button")).click();
+	    Thread.sleep(3000);
+	    String text = driver.findElement(By.xpath("//*[@id='property']/header/section/div[1]/div[1]/div/h1")).getText();
+	 Assert.assertEquals(text, text);
+	 File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	FileUtils.copyFile(scrFile, new File("D:\\Geophy\\screenshot.png"));
+	    driver.findElement(By.xpath("//*[@id='app']/header/div/nav/ul[1]/li[5]/a")).click();
+	  }
+	  @Test (priority = 1)
+	  public void testGeophyNew1() throws Exception {
+	    driver.get("https://evra.geophy.com/login");
+	    driver.findElement(By.id("email")).sendKeys("qaskillschallenge@geophy.com");
+	    driver.findElement(By.id("password")).sendKeys("qaskillschallenge@geophy.com");
+	    driver.findElement(By.xpath("//*[@id='form_login']/div[4]/button")).click();
+	    driver.findElement(By.id("address_input")).sendKeys("555 N");
+	    Thread.sleep(3000);
+	    driver.findElement(By.id("address_input")).sendKeys(Keys.DOWN); 
+	    driver.findElement(By.id("address_input")).sendKeys(Keys.DOWN); 
+	    driver.findElement(By.id("address_input")).sendKeys(Keys.DOWN); 
+	    driver.findElement(By.id("address_input")).sendKeys(Keys.ENTER);
+	    driver.findElement(By.xpath("//*[@id='app']/form/div[2]/div/button")).click();
+	    driver.findElement(By.id("noi")).sendKeys("2,000,000");
+	    driver.findElement(By.id("number_of_units")).sendKeys("20");
+	    driver.findElement(By.id("year_built")).sendKeys("2000");
+	    driver.findElement(By.id("occupancy")).sendKeys("80");
+	    driver.findElement(By.xpath("//*[@id='app']/form/div[3]/button")).click();
+	    Thread.sleep(3000);
+	    String text = driver.findElement(By.xpath("//*[@id='property']/header/section/div[1]/div[1]/div/h1")).getText();
+	 Assert.assertEquals(text, text);
+	 File scrFile1 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(scrFile1, new File("D:\\Geophy\\screenshot1.png"));
+	    driver.findElement(By.xpath("//*[@id='app']/header/div/nav/ul[1]/li[5]/a")).click();
+	  }
+	  @Test (priority = 2)
+	  public void testGeophyNew2() throws Exception {
+	    driver.get("https://evra.geophy.com/login");
+	    driver.findElement(By.id("email")).sendKeys("qaskillschallenge@geophy.com");
+	    driver.findElement(By.id("password")).sendKeys("qaskillschallenge@geophy.com");
+	    driver.findElement(By.xpath("//*[@id='form_login']/div[4]/button")).click();
+	    driver.findElement(By.id("address_input")).sendKeys("555 N College Avenue Tempe AZ USA");
+	    Thread.sleep(3000);
+	    driver.findElement(By.id("address_input")).sendKeys(Keys.DOWN); 
+	    driver.findElement(By.id("address_input")).sendKeys(Keys.ENTER);
+	    driver.findElement(By.xpath("//*[@id='app']/form/div[2]/div/button")).click();
+	    driver.findElement(By.id("noi")).sendKeys("3,000,000");
+	    driver.findElement(By.id("number_of_units")).sendKeys("15");
+	    driver.findElement(By.id("year_built")).sendKeys("2005");
+	    driver.findElement(By.id("occupancy")).sendKeys("85");
+	    driver.findElement(By.xpath("//*[@id='app']/form/div[3]/button")).click();
+	    Thread.sleep(3000);
+	    String text = driver.findElement(By.xpath("//*[@id='property']/header/section/div[1]/div[1]/div/h1")).getText();
+	 Assert.assertEquals(text, text);
+	 File scrFile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	FileUtils.copyFile(scrFile2, new File("D:\\Geophy\\screenshot2.png"));
+	    driver.findElement(By.xpath("//*[@id='app']/header/div/nav/ul[1]/li[5]/a")).click();
+	  }
+	  @AfterTest
+	  public void termitateBrowser(){
+		  driver.quit();
+	  }
+	  
+	}
